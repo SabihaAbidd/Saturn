@@ -3,7 +3,7 @@ import * as THREE from 'three'
 
 const PLANET_RADIUS = 2
 const INNER = PLANET_RADIUS * 1.22
-const OUTER = PLANET_RADIUS * 2.68
+const OUTER = PLANET_RADIUS * 2.85
 const TILT = THREE.MathUtils.degToRad(-28)
 
 function seeded(index) {

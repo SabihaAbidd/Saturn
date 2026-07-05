@@ -21,10 +21,10 @@ export default function SaturnScene() {
         outputColorSpace: THREE.SRGBColorSpace,
       }}
       camera={{
-        fov: 40,
+        fov: 36,
         near: 0.1,
         far: 2000,
-        position: [0, 1.45, 9.4],
+        position: [0, 2.05, 9.2],
       }}
       style={{ background: '#03040a' }}
     >
@@ -64,7 +64,7 @@ export default function SaturnScene() {
         enablePan={false}
         enableZoom
         enableRotate
-        minDistance={7.2}
+        minDistance={7.6}
         maxDistance={14.5}
         autoRotate
         autoRotateSpeed={0.18}

@@ -56,8 +56,7 @@ export default function InfoSection() {
           "The jewel of our solar system."
         </blockquote>
         <p className="description reveal">
-          Saturn is the sixth planet from the Sun and is famous<br />
-          for its breathtaking ring system made of ice and rock particles.
+          Saturn is the sixth planet from the Sun and is famous for its breathtaking ring system made of ice and rock particles.
         </p>
         <div className="controls-row reveal" role="note" aria-label="Interaction hints">
           <div className="ctrl-item">
