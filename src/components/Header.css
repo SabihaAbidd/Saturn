@@ -1,0 +1,54 @@
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 26px 40px;
+  pointer-events: none;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  font-family: var(--font-sans);
+  font-size: 0.62rem;
+  font-weight: 300;
+  letter-spacing: 0.5em;
+  color: #C9A96E;
+  opacity: 0.82;
+}
+
+.header-menu {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 4px;
+  pointer-events: all;
+}
+
+.header-menu span {
+  display: block;
+  width: 21px;
+  height: 1px;
+  background: #C9A96E;
+  opacity: 0.65;
+  transition: opacity 0.2s ease;
+}
+
+.header-menu:hover span {
+  opacity: 1;
+}
+
+@media (max-width: 600px) {
+  .site-header {
+    padding: 18px 22px;
+  }
+}

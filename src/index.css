@@ -1,0 +1,41 @@
+/* ──────────────────────────────────────────
+   Global Reset & Design Tokens
+   Saturn — Cinematic Landing Page
+────────────────────────────────────────── */
+:root {
+  --void:   #05070D;
+  --deep:   #0B1220;
+  --gold:   #C9A96E;
+  --beige:  #D4C4A0;
+  --ivory:  #EDE8DC;
+  --dim:    rgba(201, 169, 110, 0.35);
+
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans:  'Montserrat', system-ui, sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background: var(--void);
+  color: var(--ivory);
+  font-family: var(--font-sans);
+  font-weight: 200;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--void); }
+::-webkit-scrollbar-thumb { background: var(--dim); border-radius: 2px; }

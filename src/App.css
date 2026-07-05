@@ -1,0 +1,13 @@
+.app {
+  min-height: 200vh;
+  background: #03040a;
+  position: relative;
+}
+
+.hero {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #03040a;
+}
