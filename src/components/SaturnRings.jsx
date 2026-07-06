@@ -171,8 +171,24 @@ export default function SaturnRings() {
   const depthMaterial = useMemo(() => new THREE.MeshDepthMaterial({
     depthPacking: THREE.RGBADepthPacking,
     alphaMap: texture,
-    alphaTest: 0.1,
+    alphaTest: 0.015,
   }), [texture])
+
+  depthMaterial.onBeforeCompile = (shader) => {
+    shader.fragmentShader = shader.fragmentShader.replace(
+      '#include <alphamap_fragment>',
+      /* glsl */`
+        #ifdef USE_ALPHAMAP
+          diffuseColor.a *= texture2D(alphaMap, vAlphaMapUv).g;
+        #endif
+
+        float shadowGrain = fract(sin(dot(gl_FragCoord.xy, vec2(12.9898, 78.233))) * 43758.5453);
+        float shadowDensity = clamp(diffuseColor.a * 0.46, 0.0, 0.42);
+        if (shadowGrain > shadowDensity) discard;
+      `,
+    )
+  }
+  depthMaterial.needsUpdate = true
 
   return (
     <group rotation={[TILT, 0, 0]}>

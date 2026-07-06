@@ -12,7 +12,7 @@ import SceneLighting from './SceneLighting'
 export default function SaturnScene() {
   return (
     <Canvas
-      shadows
+      shadows={{ type: THREE.PCFSoftShadowMap }}
       dpr={[1, 2]}
       gl={{
         antialias: true,

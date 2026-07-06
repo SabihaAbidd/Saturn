@@ -26,9 +26,10 @@ const ATM_FRAG = /* glsl */`
     vec3 n = normalize(vNormalW);
     vec3 v = normalize(cameraPosition - vWorldPos);
     vec3 l = normalize(lightDir);
-    float fresnel = pow(1.0 - max(dot(n, v), 0.0), 2.75);
-    float lit = smoothstep(-0.35, 0.75, dot(n, l));
-    float alpha = fresnel * lit * 0.34;
+    float fresnel = pow(1.0 - max(dot(n, v), 0.0), 4.25);
+    float lit = smoothstep(-0.2, 0.85, dot(n, l));
+    float edgeOnly = smoothstep(0.58, 1.0, fresnel);
+    float alpha = edgeOnly * lit * 0.055;
     gl_FragColor = vec4(glowColor, alpha);
   }
 `
@@ -72,7 +73,7 @@ export default function SaturnPlanet() {
         <primitive object={planetMaterial} attach="material" />
       </mesh>
 
-      <mesh scale={[1.045, 1.045 * 0.918, 1.045]} renderOrder={3}>
+      <mesh scale={[1.018, 1.018 * 0.918, 1.018]} renderOrder={3}>
         <sphereGeometry args={[2, 96, 96]} />
         <primitive object={atmosphereMaterial} attach="material" />
       </mesh>
