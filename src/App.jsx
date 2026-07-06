@@ -4,25 +4,36 @@ import SaturnScene from './components/SaturnScene'
 import InfoSection from './components/InfoSection'
 import './App.css'
 
+const MIN_LOADER_MS = 1600
+const LOADER_FADE_MS = 850
+
 function CinematicLoader() {
   const { active, progress } = useProgress()
   const [visible, setVisible] = useState(true)
+  const [fadeOut, setFadeOut] = useState(false)
+  const [minElapsed, setMinElapsed] = useState(false)
   const isComplete = !active && (progress >= 100 || progress === 0)
 
   useEffect(() => {
-    if (!isComplete) {
-      setVisible(true)
-      return undefined
-    }
+    const timer = window.setTimeout(() => setMinElapsed(true), MIN_LOADER_MS)
+    return () => window.clearTimeout(timer)
+  }, [])
 
-    const timeout = window.setTimeout(() => setVisible(false), 900)
-    return () => window.clearTimeout(timeout)
-  }, [isComplete])
+  useEffect(() => {
+    if (!isComplete || !minElapsed) return undefined
+
+    setFadeOut(true)
+    const removeTimer = window.setTimeout(() => setVisible(false), LOADER_FADE_MS)
+
+    return () => {
+      window.clearTimeout(removeTimer)
+    }
+  }, [isComplete, minElapsed])
 
   if (!visible) return null
 
   return (
-    <div className={`cinematic-loader${isComplete ? ' is-complete' : ''}`} aria-live="polite" aria-label="Loading Saturn experience">
+    <div className={`cinematic-loader${fadeOut ? ' is-complete' : ''}`} aria-live="polite" aria-label="Loading Saturn experience">
       <div className="loader-orbit" aria-hidden="true">
         <span />
       </div>
